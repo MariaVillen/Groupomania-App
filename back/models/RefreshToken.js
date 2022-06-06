@@ -20,8 +20,8 @@ const RefreshToken = sequelize.define(
 
 // refreshtokens
 
-RefreshToken.belongsTo(Users, { onDelete: "CASCADE" });
-Users.hasMany(RefreshToken,  { onDelete: "CASCADE" })
+RefreshToken.belongsTo(Users, { onDelete: "cascade" });
+Users.hasMany(RefreshToken,  { onDelete: "cascade" })
 
 module.exports = RefreshToken;
 
