@@ -21,8 +21,6 @@ exports.addPost = (req, res) => {
   const userOwner = parseInt(req.body.userId);
 
   if ( userOwner !== req.userId && req.roles !== ROLES_LIST.admin ) {
-    console.log("POST USER ", userOwner ,  " " , typeof userOwner, " REQUESTINGUSER ", req.userId, " ", typeof req.userId);
-    console.log("condicion ",  userOwner !== req.userId);
     return res.status( 401 ).json({ "error": "operation interdit" });
   }
 

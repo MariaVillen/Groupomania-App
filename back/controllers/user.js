@@ -174,7 +174,6 @@ exports.updateUser = (req, res) => {
         }
 
       } catch ( err ) {
-        console.log(err);
         return res.status( 400 ).json({ "error": err.message });
       }
     } else {
@@ -197,7 +196,6 @@ exports.updateUser = (req, res) => {
 
       // If there are files to modify
       if ( req.files ) {
-          console.log("archivos: ", req.files);
 
         if ( req.files.cover ) {
           const oldCover = user.coverPicture.split( "/images/covers/" )[1];
@@ -241,7 +239,6 @@ exports.updateUser = (req, res) => {
         return res.status( 200 ).json({ "message": modifiedUser }); 
       })
       .catch(( err ) => {
-        console.log(err);
         return res.status( 400 ).json({ "error": err.message });
       })
     }
@@ -288,13 +285,11 @@ exports.deleteUser = (req, res) => {
             console.log("borrando imagen avatar ", filename);
             fs.unlink(`images/covers/${filename}`, (err) => {
               if (err) {
-                console.log("error al borrar ", err);
               } else {
                 Users.update({coverPicture:""}, {where :{ id: userToDelete}})
                 .catch( (err) =>{
                   console.log("not updated on db");
                 })
-                console.log("borrado");
               }
             });
             }
@@ -307,16 +302,14 @@ exports.deleteUser = (req, res) => {
             if (err) {
               console.error('No Read access');
             } else {
-            console.log("borrando imagen avatar ", filename);
             fs.unlink(`images/persons/${filename}`, (err) => {
               if (err) {
-                console.log("error al borrar ", err);
+                console.log("error when erasing", err);
               } else {
                 Users.update({profilePicture:""}, {where :{ id: userToDelete}})
                 .catch( (err) =>{
                   console.log("not updated on db");
                 })
-                console.log("borrado");
               }
             });
             }
@@ -416,7 +409,6 @@ exports.postFollowsHandler = (req, res) =>{
 // [GET] http://localhost:3500/api/user/:id/follows
 
 exports.getUserFollows = (req, res) => {
-  const userFollowed = req.params.id;
   const userFollower = req.userId;
 
   Users.findByPk( userFollower )

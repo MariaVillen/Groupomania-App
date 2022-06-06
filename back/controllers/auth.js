@@ -86,10 +86,10 @@ exports.postLogin = async (req, res) => {
 
     // Cookies verification
     const cookies = req.cookies;
-    console.log("Login ok. Procedemos a ver si hay cookies");
+   
     // Case: no cookies
     if ( !cookies?.jwt ) {
-      console.log("no hay cookies, logueamos");
+
       try{
 
         
@@ -137,36 +137,32 @@ exports.postLogin = async (req, res) => {
       }
       // Case: cookies found
     } else {
-      console.log("hay cookies. Verificamos si son validas");
+   
       const cookieTokenDecoded = jwt.verify( cookies.jwt, process.env.REFRESH_TOKEN_SECRET )
       
       if (cookieTokenDecoded) {
-        console.log("son validas. reuse situation error 403");
-        console.log("destruimos refresh token por reuse situation en login");
-
+    
         RefreshTokens.destroy({
           where: { userId: cookieTokenDecoded.userId },
         })
         .then(() => {
-          console.log("retornamos error 403");
+     
           res.clearCookie("jwt", { httpOnly: true, sameSite: "none", secure: true });
           return res.status(403).json({"error":"token not valid. Reuse Situation."})
         })
         .catch((err) => {
-          console.log("retornamos error 500");
+        
           return res.status(500).json({"error" : `Error ${err} while destroying refresh on reuse situation`});
         })
 
       } else {
 
-        console.log("no son validas- error 403");
         res.clearCookie( "jwt", { httpOnly: true, sameSite: "none", secure: true } );
         return res.status(403).json({"error":"Trying to login with an invalid cookie. You have been logout. Try again"});
 
       }      
     }
   } catch (err) {
-    console.log("se produce un error al buscar el usuario en la base de datos");
     return res.status(500).json({ "error": `error ${err.message} while founding user to login`})
   }
 }
@@ -217,7 +213,6 @@ exports.postLogout = async (req, res) => {
     }
 
   } catch ( err ) {
-    console.log("error", err);
     return res.status(500).json({ "error" : `${err.message} while founding token in DB `})
   }
 }

@@ -19,10 +19,7 @@ const isAuth = (req, res, next)  => {
     ( err, decoded ) =>{
           
       if (err) {
-
-      // verifier la validitée du refresh token
-      // Si c'est valide: actualiser l'access token /como lo envio con la respuesta?
-      // si c'est pas le cas: 403 et logout. 
+        
         return res.status( 403 ).json({ 'error':'Token expired or invalid' });
 
       } else {
