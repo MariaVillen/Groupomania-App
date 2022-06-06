@@ -34,7 +34,7 @@ function PostDetail() {
           setIsLoading(false);
         } 
       } catch(err) {
-        //console.log(err.message);
+        console.log(err.message);
       }
     }
 
@@ -58,6 +58,7 @@ function PostDetail() {
             key={post.id}
             post={post}
             totalComments={totalComments}
+            detail={true}
           /> 
           <div className={classes.commentContent}>
             <PostAddComment  totalComments = {totalComments} loadComments = {loadComments}

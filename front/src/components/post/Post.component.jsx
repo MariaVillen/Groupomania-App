@@ -2,7 +2,7 @@ import classes from "./Post.module.scss";
 import { Edit, Delete, Report, Favorite, FavoriteBorderOutlined, Comment } from "@mui/icons-material";
 import DefaultAvatar from "../../images/avatar-default.png";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Share from "../share/Share.component";
 import Avatar from "../avatar/avatar.component";
@@ -15,7 +15,7 @@ import {ROLES} from "../../helpers/rolesList";
 
 // Show a Post
 
-export default function Post({ post, loadPosts, isLoadPosts, totalComments, className = "" }) {
+export default function Post({ post, loadPosts, isLoadPosts, totalComments, className = "", detail }) {
  
   // Context
   const { auth, user } = useAuth();
@@ -23,7 +23,7 @@ export default function Post({ post, loadPosts, isLoadPosts, totalComments, clas
   
   // Api
   const axiosPrivate = useAxiosPrivate();
-
+  const navigate = useNavigate();
   //get Id post to link
   const id = `post${post.id}`;
 
@@ -60,7 +60,11 @@ export default function Post({ post, loadPosts, isLoadPosts, totalComments, clas
       });
 
       if ( result ) {
-        isLoadPosts( !loadPosts );
+        if (!detail){
+        isLoadPosts( !loadPosts ); }
+        else {
+          navigate("/", {replace: true});
+        }
         console.log("Publication supprimée");
       } else {
         console.log("Erreur à la suppersion de la publication.");
