@@ -1,0 +1,52 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+
+.unAuth {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../images/background.jpeg);
+    background-size: cover;
+    min-height: 100vh;
+    min-width: 360px;
+
+    &_wrapper {
+        background: white;
+        padding: 1em 2em;
+        width: 90%;
+        text-align: center;
+        @include box--shadow;
+    }
+    &_img {
+        max-width: 360px;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin: 0 0 1em 0;
+        text-align: center;
+        
+        @include mq("medium") {
+            margin: 1em;
+        }
+    }
+
+    &_footer {
+        padding: 1em;
+
+        button {
+            background-color: $primary-contrast;
+            color: white;
+            font-size: 1.2em;
+
+            &:hover{
+                background-color: $secondary-color;
+                color: black;
+            }
+        }
+    }
+}

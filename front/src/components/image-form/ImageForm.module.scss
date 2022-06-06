@@ -1,0 +1,52 @@
+@import "../../styles-utils/graphiqueColors.scss";
+
+.imageForm {
+  cursor: pointer;
+
+  &_item {
+    display: flex;
+    align-items: center;
+  }
+  &_icon {
+    margin-right: 1em;
+  }
+
+  &_container {
+    margin: 1em 0;
+
+    input {
+      margin-top: 1em;
+    }
+  }
+
+  &_btn_section {
+    display: flex;
+    justify-content: right;
+  }
+  &_btn {
+    border-radius: 50%;
+    margin: 0.5em 0px;
+    height: 25px;
+    width: 25px;
+    background-color: $secondary-color-op;
+    border-color: $secondary-color-op;
+    color: black;
+    margin-right: 1em;
+    padding: 3px;
+    transition: background 300ms ease-in-out;
+
+    &:hover {
+      background-color: $primary-contrast;
+      border-color: $primary-contrast;
+      color: white;
+    }
+
+    &_container {
+      padding: 0;
+      margin: 0;
+      background: none;
+      width: auto;
+      text-align: center;
+    }
+  }
+}

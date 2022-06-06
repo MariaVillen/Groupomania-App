@@ -1,0 +1,80 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+.createReport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  font-family: Roboto, sans-serif;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+
+  &_card {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    background: white;
+  }
+
+  &_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      padding: 1em;
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.5em;
+    }
+  }
+
+  &_body {
+    p {
+      margin-bottom: 1em;
+    }
+
+    &_text {
+      width: 90%;
+      padding: 1em;
+      background: $secondary-color;
+      margin: 0 auto;
+
+      &_edit {
+        width: 100%;
+        box-sizing: content-box;
+        resize: none;
+        font-size: 1em;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        overflow-y: hidden;
+      }
+    } 
+  }
+
+  &_footer {
+    display: flex;
+    justify-content: right;
+    margin-top: 1em;
+
+    .btn {
+      width: auto;
+      padding: auto 1em;
+
+      &_cancel {
+        background-color: $secondary-color-op;
+        margin-right: 1em;
+      }
+      &_submit {
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+
+
+.profileForm {
+  display: flex;
+  flex-flow: row wrap;
+
+  &_edit {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      resize: none;
+      width: auto;
+      width: 100%;
+    
+  }
+}
+
+.sidebarList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  width: 100%;  
+  justify-content: space-between;
+  
+  @include mq("large"){
+    flex-direction: column;
+  }
+}
+
+.profileForm_imageEdit {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-direction: column;
+  margin-right: 1em;
+  flex:1;
+
+    label {
+      display: flex;
+      align-items: center;
+    }
+
+    svg {
+        margin-right: 15px;
+    }
+      
+}
+
+
+
+.linkList {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+
+}
+.linkList_danger {
+  color: $primary-contrast;
+  font-weight: 500;
+  width: auto;
+  background: transparent;
+  padding: 0;
+  font-size: 1em;
+}

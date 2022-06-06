@@ -1,0 +1,156 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+.post {
+  width: 100%;
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.46);
+  margin: 30px 0;
+
+  &_wrapper {
+    padding: 10px;
+  }
+
+  &_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  &_avatar {
+    margin-right: 1em;
+  }
+
+  &_menu {
+    box-sizing: border-box;
+    height: 100%;
+
+    &_content_icon {
+      margin: 0 0.5em;
+
+      & svg {
+        padding: 3px;
+        height: 1.4em;
+        width: 1.4em;
+        color: $black-color;
+      }
+
+      &:hover .post_menu_icon {
+        background: $primary-color;
+        color: white;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &_profile {
+    display: flex;
+    align-items: center;
+
+    &_image {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    &_username {
+      font-style: 15px;
+      font-weight: 500;
+      margin: 0 10px;
+    }
+  }
+
+  &_date {
+    font-style: 12px;
+  }
+
+  &_body {
+    margin: 20px 0;
+
+    img {
+      margin-top: 20px;
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+    }
+  }
+
+  &_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_likes {
+    display: flex;
+    align-items: center;
+
+    button {
+      width: auto;
+      border-radius: 50%;
+      color: white;
+      text-align: center;
+      margin-right: 5px;
+      padding: 8px;
+
+      &.favorite {
+        background-color: transparent;
+      }
+
+      .likeIcon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        color: rgb(205, 16, 16);
+      }
+
+      .likeCounter {
+        font-size: 15px;
+      }
+    }
+  }
+
+  &_comments {
+    display: flex;
+    align-items: center;
+    width: auto;
+
+    span {
+      cursor: pointer;
+      border-bottom: 1px dashed gray;
+      font-size: 15px;
+    }
+
+    .comment {
+      width: auto;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $black-color;
+      
+      &_visited {
+        color: black;
+      }
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    .commentIcon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      background-color: transparent;
+      margin-right: 0.5em;
+    }
+  }
+}
+.post_menu_user {
+  display: flex;
+}
+.post_comments {
+  text-decoration: none;
+}

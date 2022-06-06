@@ -1,0 +1,24 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+.friendList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.friendList {
+    display: flex;
+    justify-content:space-evenly;
+    flex-flow: row wrap;
+}
+
+.activeCard {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1em;
+    background-color: $secondary-color;
+    @include box--shadow;
+    max-width: 500px;
+}

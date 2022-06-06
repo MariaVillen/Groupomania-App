@@ -1,0 +1,52 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+.reportAdminCard {
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary-color;
+  @include box--shadow;
+
+  &_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+
+    &_title {
+      font-weight: 700;
+      font-size: 1.2em;
+      text-align: left;
+      padding: 0.5em;
+      padding: 1em;
+    }
+  }
+
+  &_main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 1em;
+
+    &_report {
+      background-color: white;
+      padding: 1em;
+    }
+  }
+
+  &_footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+  }
+}

@@ -1,0 +1,47 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+.home {
+  &_container {
+    display: flex;
+    margin: 0 auto;
+    background: $graylight-color;
+    min-height: 100%;
+    height: 100%;
+  }
+
+  &_sidebar {
+    display: none;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+    position: sticky;
+    top: 70px;
+
+    @include mq(small) {
+      display: inherit;
+      flex: 2.5;
+    }
+  }
+
+  &_feed_content {
+    flex: 5.5;
+    padding: 20px;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  &_more_comment_content {
+    display: none;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+    position: sticky;
+    top: 70px;
+    padding: 0 1em;
+
+    @include mq(small) {
+      display: inherit;
+      flex: 2;
+    }
+  }
+}
+

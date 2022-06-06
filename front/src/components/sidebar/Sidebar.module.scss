@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.wrapper {
+    padding: 20px;
+}
+
+
+button {
+    width: 150px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.separator {
+    margin: 20px 0;
+}
+
+.friendList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+     
+    li{
+        padding: 0.5em;
+    }
+}
+
+.title {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+    font-weight: 700;
+}

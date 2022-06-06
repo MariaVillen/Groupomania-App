@@ -1,0 +1,27 @@
+/* Breakpoints */
+
+$breakpoints: (
+  small: 562px,
+  medium: 768px,
+  large: 992px,
+  xlarge: 1440px,
+);
+
+/* Break Points */
+
+@mixin mq($mq-breakpoint, $mq-breakpoints: $breakpoints) {
+  @if map-has-key($mq-breakpoints, $mq-breakpoint) {
+    $mq-breakpoint: map-get($mq-breakpoints, $mq-breakpoint);
+  }
+  @media screen and (min-width: #{$mq-breakpoint}) {
+    @content;
+  }
+}
+
+// Styles
+
+//box shadow:
+
+@mixin box--shadow {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}

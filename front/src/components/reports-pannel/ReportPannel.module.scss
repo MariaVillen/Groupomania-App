@@ -1,0 +1,18 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+.notFound {
+    margin-top: 1em;
+}
+
+.cards {
+    margin: 1em;
+    max-width: 500px;
+}
+
+.reportList {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

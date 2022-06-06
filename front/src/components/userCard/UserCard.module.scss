@@ -1,0 +1,102 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+
+.activeCard {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1em;
+  background-color: $secondary-color;
+  @include box--shadow;
+
+  &_data { 
+      padding: 1em 0;
+      flex:2;
+      min-width: 320px;
+      div {
+          padding: 0.5em 0;
+          flex-wrap: wrap;
+      }
+      
+      span {
+          margin-right: 0.5em;
+          font-weight: 700;
+      }
+  }
+
+  &_header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex:1;
+      padding: 1em;
+
+      &_name {
+          font-weight: 700;
+          word-wrap: normal;
+          span:first-child {
+              margin-right: 0.5em;
+          }
+      }
+  }
+
+  &_user{
+      width: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &_name {
+          span:first-child {
+              margin-right: 0.5em;
+          }
+      }
+  }
+  &_body {
+      display: flex;
+      flex-flow: row wrap;
+      flex-grow: 2;
+      align-items: center;
+      padding: 0 1em;
+      background: white;
+  }
+  &_container{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+
+      span {
+          padding-right: 0.5em;
+      }
+  }
+  &_action {
+      flex: 0 0;
+
+
+      &_check {
+        
+          &_inactive {
+              padding: 0.5em;
+              width: 100px;
+              margin: 0.5em;
+              border: none;
+              border-radius: 5px;
+              background-color: $primary-contrast;
+              color: white;
+          }
+          &_active {
+              padding: 0.5em;
+              width: 100px;
+              margin: 0.5em;
+              border: none;
+              border-radius: 5px;
+              background-color: $secondary-color-op;
+              
+          }
+      }
+  }
+}

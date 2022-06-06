@@ -1,0 +1,125 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  width: 100%;
+  background-color: white;
+
+  &_logo {
+    height: calc(100% - 10px);
+    padding: 10px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &_menu {
+    padding-right: 1em;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_avatar {
+    height: 48px;
+    width: 48px;
+    @include mq(medium) {
+      display: none;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+
+    &.show + .topbar_links {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+
+      @include mq(medium) {
+        max-width: 600px;
+        height: 100%;
+      }
+    }
+  }
+
+  &_links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 4.5em;
+    width: 100%;
+    height: 100vh;
+    max-width: 0px;
+    padding: 0;
+    margin:0;
+    background: rgba(255, 255, 255, 0.9);
+    color: $black-color;
+    z-index: 2;
+    overflow: hidden;
+    transition: max-width 300ms ease-in-out;
+
+    @include mq(medium) {
+      flex-direction: row;
+      position: static;
+      max-width: 100%;
+      height: 100%;
+      background-color: transparent;
+      color: $black-color;
+    }
+  }
+
+  &_item {
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 500ms ease-in-out;
+
+    @include mq(medium) {
+      display: flex;
+      align-items: center;
+    }
+
+    
+  &:hover {
+    background-color: $primary-color + E6;
+  }
+
+    &.notLink {
+      width: 100%;
+      display: inline-block;
+      padding: 1em;
+
+      @include mq(medium) {
+        width: auto;
+        display: flex;
+      }
+    }
+  }
+
+  &_link {
+    color: inherit;
+    text-decoration: none;
+    padding: 1em;
+    display: inline-block;
+    transition: background-color 500ms ease-in-out;
+    width: 100%;
+    @include mq(medium){
+      width: auto;
+    }
+  }
+
+}

@@ -1,0 +1,142 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+.auth {
+  width: 95%;
+  max-width: 25rem;
+  margin: 3rem auto;
+  padding: 0;
+  text-align: center;
+  border-top: 13px solid $primary-color;
+  border-radius: 6px;
+  background-color: white;
+  @include box--shadow;
+
+  h1 {
+    padding: 1em;
+    text-align: center;
+    color: $black-color;
+    background-color: $secondary-color;
+    margin: 0;
+  }
+
+  form {
+    padding: 2em;
+  }
+
+  .errMsg {
+    background-color: $primary-contrast;
+    font-weight: 500;
+    padding: 1em;
+    color: white;
+  }
+
+  &_control {
+    margin-bottom: 0.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: $black-color;
+    }
+    span {
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      border: 2px solid $secondary-color;
+      &:focus-within {
+        border: 2px solid $primary-color;
+      }
+      .passIcon {
+        align-self: flex-end;
+        color: $black-color;
+      }
+    }
+    input {
+      width: 100%;
+      padding: 0.25rem;
+      font-size: inherit;
+      text-align: left;
+      outline: none;
+      border: none;
+      background-color: white;
+      color: $black-color;
+      border: none;
+    }
+    & > input {
+      border: 2px solid $secondary-color;
+    }
+    & > input:focus,
+    & > input:active {
+      border: 2px solid $primary-color;
+    }
+
+    .instructions {
+      font-size: 0.75rem;
+      border-radius: 0.5rem;
+      color: $primary-contrast;
+      padding: 14px;
+      position: relative;
+      bottom: -5px;
+    }
+  }
+
+
+  &_actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+
+    &_link {
+      width: auto;
+      padding: 0.5rem 2.5rem;
+      cursor: pointer;
+      font-size: 1em;
+      color: white;
+      background-color: $primary-contrast;
+      transition: background-color 500ms ease-in-out;
+
+      &:hover {
+        background-color: $secondary-color-op;
+      }
+    }
+
+    &_toggle {
+      width: auto;
+      margin-top: 1rem;
+      padding: 0.15rem 1.5rem;
+      font-size: 1em;
+      color: $primary-contrast;
+      border: none;
+      background-color: transparent;
+
+      &:hover {
+        color: $secondary-color-op;
+        background-color: transparent;
+      }
+    }
+
+    &_persist {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      label {
+        margin: 0;
+        font-size: 0.8em;
+      }
+      input {
+        height: 25px;
+        width: 25px;
+        margin: 0 5px 2px 2px;
+      }
+    }
+  }
+}
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}

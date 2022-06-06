@@ -1,0 +1,10 @@
+.avatar {
+
+  &_image {
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  
+}

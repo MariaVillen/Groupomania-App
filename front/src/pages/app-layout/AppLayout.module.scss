@@ -1,0 +1,31 @@
+@import "../../styles-utils/mixins.scss";
+
+.container {
+  width: 100%;
+
+   * {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+  }
+
+}
+
+.main {
+  min-height: calc(100vh - 70px);
+  height: 100%;
+}
+
+.navigation {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  @include box--shadow;
+}
+
+.spinner {
+  position: absolute;
+}
+

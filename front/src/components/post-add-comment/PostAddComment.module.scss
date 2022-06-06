@@ -1,0 +1,51 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
+.addComment {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  &_container {
+    display: flex;
+    align-items: center;
+  }
+
+  &_text {
+    width: 100%;
+    padding: 1em;
+    background: $secondary-color;
+    border-radius: 1em;
+    margin-left: 0.5em;
+  }
+  &_edit {
+    width: 100%;
+    box-sizing: content-box;
+    resize: none;
+    font-size: 1em;
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.btn {
+
+  display: flex;
+  justify-content: right;
+  margin-top: 1em;
+
+  &_cancel {
+    background-color: $secondary-color-op;
+    width: auto;
+    padding: auto 1em;
+    margin-right: 1em;
+  }
+  &_submit {
+    background-color: $primary-color;
+    color: black;
+    width: auto;
+    padding: auto 1em;
+  }
+
+}
