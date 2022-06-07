@@ -185,7 +185,9 @@ exports.updatePostById = async (req, res) => {
           const sentImageUrl = `${req.protocol}://${req.get("host")}/images/posts/${req.file.filename}`;
 
           // Getting old url
-          const oldFileName = foundPost.attachement.split("/images/posts")[1];
+          if(foundPost?.attachement){
+          const oldFileName = foundPost?.attachement?.split("/images/posts")[1];
+          }
 
           // Set object to update
           let infoToUpdate = req.body.content
@@ -193,7 +195,8 @@ exports.updatePostById = async (req, res) => {
             : { attachement: sentImageUrl };
 
           // Erase old Image and update
-          // Removing old file image and updating sauce
+          // Removing old file image and updating post
+          if (foundPost?.attachement) {
           fs.unlink( `images/posts/${oldFileName}`, 
             () => {
               Posts.update( infoToUpdate , {
@@ -205,7 +208,19 @@ exports.updatePostById = async (req, res) => {
               .catch( ( err ) => {
                 return res.status( 400 ).json({ "error": err.message })
               });
-          });
+          });}
+          else {
+            
+            Posts.update( infoToUpdate , {
+              where: { id: foundPost.id }
+              })
+              .then( () => {
+                return res.status( 200 ).json({ "message": "Objet modifié" });
+              })
+              .catch( ( err ) => {
+                return res.status( 400 ).json({ "error": err.message })
+              });
+          }
         } else {
           Posts.update({ content: req.body.content },
             { where: { id: foundPost.id }

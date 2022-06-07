@@ -24,9 +24,10 @@
   &_menu {
     box-sizing: border-box;
     height: 100%;
+    display: flex;
 
     &_content_icon {
-      margin: 0 0.5em;
+      margin: 0;
 
       & svg {
         padding: 3px;
@@ -46,6 +47,7 @@
   &_profile {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     &_image {
       width: 32px;

@@ -23,14 +23,20 @@
   padding: 0;
   margin: 0;
   list-style: none;
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  width: 100%;  
-  justify-content: space-between;
+  display: flex;;  
+  flex-direction: column;
+  justify-content: left;
   
+  @include mq("small") {
+    align-items: baseline;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+  }
   @include mq("large"){
     flex-direction: column;
+    justify-content: left;
   }
 }
 
