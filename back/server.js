@@ -2,6 +2,7 @@
 const dotenv = require( "dotenv" );
 dotenv.config();
 const createDatabase = require( "./utils/createDatabase" );
+const createAdmin = require("./utils/createAdmin");
 // Database
 const sequelize = require( "./utils/database" );
 const http = require( "http" );
@@ -47,7 +48,6 @@ const errorHandler = ( error ) => {
   }
 };
 
-createDatabase();
 
 // Server
 const server = http.createServer( app );
@@ -60,6 +60,7 @@ server.on("listening", () => {
   console.log("Listening on " + bind);
 })
 
+createDatabase();
 
 // Syncronize models of DB
 sequelize
