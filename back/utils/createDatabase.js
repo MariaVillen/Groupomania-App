@@ -1,6 +1,6 @@
 const mysql = require("mysql2");
 
-const createDatabase = () => {
+const createDatabase = async () => {
 // Open the connection to MySQL server
 const connection = mysql.createConnection({
   host: process.env.HOST,
@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
 });
 
 // Run create database statement
-connection.query(
+  connection.query(
   `CREATE DATABASE IF NOT EXISTS ${process.env.DEFAULT_DATABASE}`,
   function (err, results) {
     console.log(results);

@@ -1,7 +1,7 @@
 // Enviroment Variables
 const dotenv = require( "dotenv" );
 dotenv.config();
-const createAdmin = require( "./utils/createAdmin" );
+const createDatabase = require( "./utils/createDatabase" );
 // Database
 const sequelize = require( "./utils/database" );
 const http = require( "http" );
@@ -46,6 +46,8 @@ const errorHandler = ( error ) => {
       throw error;
   }
 };
+
+createDatabase();
 
 // Server
 const server = http.createServer( app );
