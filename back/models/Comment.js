@@ -37,12 +37,11 @@ const Comments = sequelize.define(
         return this.getDataValue("deletedAt")?.toLocaleString();
       }
     }
-  },
-  { paranoid: true }
+  }
 );
 
 // Associations
 Comments.hasMany(Reports, { onDelete: "CASCADE" });
-Reports.belongsTo(Comments, { onDelete: "CASCADE" });
+Reports.belongsTo(Comments);
 
 module.exports = Comments;

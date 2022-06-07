@@ -13,7 +13,7 @@ export default function Avatar({ userName, userImage, userId, sizePicture, class
   }
 
   return (
-    <Link area-label={userName} className={className || classes.avatar} to={`/profile/${userId || ""}`}>
+    <Link area-label={userName} className={className || classes.avatar} to={{  pathname: `/profile/${userId || ""}`}}>
       <img
         alt={ userName || "invité" }
         src={ userImage ? userImage : DefaultAvatar}

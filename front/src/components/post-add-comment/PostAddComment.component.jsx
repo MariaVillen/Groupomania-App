@@ -11,7 +11,6 @@ export default function PostComment({
   setLoadComments,
   totalComments,
   setTotalComments,
-  placeHolder,
 }) {
   const textRef = useRef();
   const [text, setText] = useState("");

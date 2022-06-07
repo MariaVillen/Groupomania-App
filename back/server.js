@@ -1,7 +1,7 @@
 // Enviroment Variables
 const dotenv = require( "dotenv" );
 dotenv.config();
-
+const createAdmin = require( "./utils/createAdmin" );
 // Database
 const sequelize = require( "./utils/database" );
 const http = require( "http" );
@@ -56,14 +56,16 @@ server.on("listening", () => {
   const address = server.address();
   const bind = typeof address === "string" ? "pipe " + address : "port " + port;
   console.log("Listening on " + bind);
-});
+})
+
 
 // Syncronize models of DB
 sequelize
-  .sync({ alter: true })
+  .sync({})
   .then(() => {
     server.listen(port);
   })
+  .then(()=>{createAdmin()})
   .catch((err) => {
     console.log(err.message);
-  });
+  })

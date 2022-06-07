@@ -2,7 +2,7 @@ import classes from "./PostDetail.module.scss";
 import Post from "../post/Post.component";
 import PostAddComment from "../post-add-comment/PostAddComment.component";
 import FeedComments from "../feed-comments/FeedComents.component";
-import { useParams } from 'react-router-dom';
+import { useOutletContext, useParams } from 'react-router-dom';
 import { useEffect, useState} from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import SpinnerLoad from "../spinner-load/SpinnerLoad";
@@ -12,6 +12,7 @@ function PostDetail() {
   const {id} = useParams();
   const [post, setPost] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadPosts, loadPosts ] = useOutletContext();
  
   const [totalComments, setTotalComments] = useState(0);
   const [loadComments, setLoadComments] = useState([]);
@@ -31,6 +32,7 @@ function PostDetail() {
           // Stock data
           setPost(data);
           setTotalComments(data.totalComments);
+          isLoadPosts(!loadPosts);
           setIsLoading(false);
         } 
       } catch(err) {

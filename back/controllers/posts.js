@@ -346,7 +346,7 @@ exports.removePost = (req, res) => {
               () => {
                 Posts.destroy({
                   where: {
-                    id: postToDelete,
+                    id: postToDelete
                   },
                 })
                 .then( () => {
@@ -362,7 +362,7 @@ exports.removePost = (req, res) => {
 
           Posts.destroy({
             where: {
-              id: postToDelete,
+              id: postToDelete
             },
           })
           .then( () => {

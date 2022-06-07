@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../utils/database");
-const bcrypt = require("bcryptjs");
+
 
 const Posts = require("./Post");
 const Reports = require("./Report");
@@ -116,9 +116,8 @@ const Users = sequelize.define(
         return this.getDataValue("deletedAt")?.toLocaleString();
       }
     }
-  },
-  { paranoid: true }
-); // soft delete
+  }
+); 
 
 //Asociations
 
@@ -130,39 +129,14 @@ Posts.belongsTo(Users);
 Users.hasMany(Comments);
 Comments.belongsTo(Users);
 
-Users.belongsToMany(Comments, {through: "likesComment", onDelete: "cascade" });
-Comments.belongsToMany(Users, {through: "likesComment",  onDelete: "cascade"});
+Users.belongsToMany(Comments, {through: "likesComment" });
+Comments.belongsToMany(Users, {through: "likesComment"});
 
 Users.hasMany(Reports);
 Reports.belongsTo(Users);
 
-Users.belongsToMany(Posts, { through: "User_Like_Post", onDelete: "cascade"});
-Posts.belongsToMany(Users, { through: "User_Like_Post", onDelete: "cascade"});
+Users.belongsToMany(Posts, { through: "User_Like_Post"});
+Posts.belongsToMany(Users, { through: "User_Like_Post"});
 
-
-// Create admin
-
-const createAdmin= async ()=>{
- 
-  Users.findOne({
-    where: {email: "admin@groupomania.com"}
-  }).then( async (result) => {
-    if (!result) {
-
-      password = process.env.ADMIN_PASS;
-      const hashedPass = await bcrypt.hash( password, 12 );
-      const newUser = await Users.create({
-        email: "admin@groupomania.com",
-        password: hashedPass,
-        lastName: process.env.ADMIN_LASTNAME,
-        name: process.env.ADMIN_NAME,
-        role: "admin",
-        isActive: 1
-      });
-    }
-  })
-}
-
-createAdmin();
 
 module.exports = Users;

@@ -24,7 +24,7 @@ export default function Home() {
         <Outlet context = {[isLoadPosts, loadPosts, user, users]} />
       </div>
       {pc ? (
-        <Rightbar className={classes.home_more_comment_content} />
+        <Rightbar className={classes.home_more_comment_content} isLoadPosts={isLoadPosts} loadPosts={loadPosts}/>
       ) : (
         <></>
       )}

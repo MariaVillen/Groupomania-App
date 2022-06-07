@@ -45,15 +45,14 @@ const Posts = sequelize.define(
         return this.getDataValue("deletedAt")?.toLocaleString();
       }
     }
-  },
-  { paranoid: true }
+  }
 );
 
 // Associations
-Posts.hasMany(Comments, { onDelete: "cascade"});
-Comments.belongsTo(Posts, {onDelete: "cascade"});
+Posts.hasMany(Comments, {onDelete: "CASCADE"});
+Comments.belongsTo(Posts);
 
-Posts.hasMany(Reports, { onDelete: "cascade" });
-Reports.belongsTo(Posts, { onDelete: "cascade" });
+Posts.hasMany(Reports , {onDelete: "CASCADE"});
+Reports.belongsTo(Posts);
 
 module.exports = Posts;
