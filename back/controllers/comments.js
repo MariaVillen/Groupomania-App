@@ -73,16 +73,9 @@ exports.updateCommentById = (req, res) => {
     .then( ( comment ) => {
       if ( !comment ) {
         return res.status( 400 ).json({ "error": "parametres manquantes" });
-      } else if ( requestingUser !== comment.userId || requiringRole !== ROLES_LIST.admin) {
+      } else if  (  !(requestingUser === comment.userId ||
+        requiringRole === ROLES_LIST.admin) ) {
         return res.status( 401 ).json({ "error": "Sans privileges" });
-      } else {
-        return comment;
-      }
-    })
-    .then((comment) => {
-        // Verify if it is admin or a user who updates his own comment.
-      if ( req.role !== ROLES_LIST.admin || requestingUser !== comment.userId) {
-          return res.status(401).json({ error: "Action non autorisée" });
       } else {
         return comment;
       }
@@ -132,7 +125,7 @@ exports.postLikeComment = (req, res) => {
                 })
               })
   
-            } else {
+            } else if (!isLiked) {
               return comment.addUser( user )
               .then( () => {
                 return Comments.increment( { likes: 1 },{  where: { id: idCommentLiked }})
@@ -140,7 +133,7 @@ exports.postLikeComment = (req, res) => {
               .then( ( result ) => {
                 return res.status(200).json({ "message": result })
               })
-            }
+            } 
           })
         })
 

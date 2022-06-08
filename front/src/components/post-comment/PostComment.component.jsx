@@ -14,7 +14,7 @@ import Avatar from "../avatar/avatar.component";
 import useAuth from "../../hooks/useAuth";
 import { axiosPrivate } from "../../api/axios";
 import DefaultAvatar from "../../images/avatar-default.png";
-
+import {ROLES} from "../../helpers/rolesList";
 
 export default function PostComment({className, setTotalComments, totalComments, loadComments, setLoadComments, comment})  {
 
@@ -173,7 +173,7 @@ useEffect(  () => {
 
               {isMenuActive ? (
                 <ul className={classes.dropdown}>
-                  {auth.user.id === comment.userId 
+                  {auth.user.id === comment.userId || auth.user.roles === ROLES.admin 
                   ? <><li onClick={allowEditionHandler}>Editer</li>
                     <li onClick={deleteHandler}>Supprimer</li></> 
                   : null}
