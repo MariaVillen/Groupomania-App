@@ -185,9 +185,7 @@ exports.updatePostById = async (req, res) => {
           const sentImageUrl = `${req.protocol}://${req.get("host")}/images/posts/${req.file.filename}`;
 
           // Getting old url
-          if(foundPost?.attachement){
-          const oldFileName = foundPost?.attachement?.split("/images/posts")[1];
-          }
+          const oldFileName = foundPost?.attachement?.split("/images/posts")[1] || "";
 
           // Set object to update
           let infoToUpdate = req.body.content
@@ -196,7 +194,7 @@ exports.updatePostById = async (req, res) => {
 
           // Erase old Image and update
           // Removing old file image and updating post
-          if (foundPost?.attachement) {
+          if (oldFileName) {
           fs.unlink( `images/posts/${oldFileName}`, 
             () => {
               Posts.update( infoToUpdate , {

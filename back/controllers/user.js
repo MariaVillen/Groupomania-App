@@ -198,40 +198,48 @@ exports.updateUser = (req, res) => {
       if ( req.files ) {
 
         if ( req.files.cover ) {
-          const oldCover = user.coverPicture.split( "/images/covers/" )[1];
+          const oldCover = user.coverPicture.split( "/images/covers/" )[1] || "";
           const newCover = `${ req.protocol }://${ req.get( "host" ) }/images/covers/${ req.files.cover[0].filename }`;
         
         // eliminar antigua imagen
-        if ( user.coverPicture ) {
+        if (oldCover) {
           fs.access(`images/covers/${oldCover}`, fs.constants.R_OK, (err) => {
             if (err) {
               console.error('No Read access');
             } else {
-            fs.unlink(`images/covers/${oldCover}`);
+            fs.unlink(`images/covers/${oldCover}`, (error)=>{
+              console.log("error ", error)
+            });
             }
           });
+          modifiedUser.coverPicture = newCover;
+        } else {
+          modifiedUser.coverPicture = newCover;
         }
-      
-        modifiedUser.coverPicture = newCover;
         }
 
         if ( req.files.avatar ) {
-          const oldAvatar = user.profilePicture.split("/images/persons/")[1];
+          const oldAvatar = user.profilePicture.split("/images/persons/")[1] || "";
           const newAvatar = `${req.protocol}://${req.get("host")}/images/persons/${req.files.avatar[0].filename}`;
           // eliminar antigua imagen   
-          if (user.profilePicture) {
+       
+          if (oldAvatar) {
             fs.access(`images/persons/${oldAvatar}`, fs.constants.R_OK, (err) => {
               if (err) {
                 console.error('No Read access');
                } else {
-              fs.unlink(`images/persons/${oldAvatar}`);
+              fs.unlink(`images/persons/${oldAvatar}`, (error)=>{
+                console.log("error", error);
+              });
               }
             });
+            modifiedUser.profilePicture = newAvatar;
+          } else {
+            modifiedUser.profilePicture = newAvatar;
           }
-          modifiedUser.profilePicture = newAvatar;
         }
-          
       }
+
       Users.update({ ...modifiedUser },{
         where: { id: userToUpdate },
       })

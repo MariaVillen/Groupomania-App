@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
 
-  const { auth } = useAuth();
+  const { auth, user } = useAuth();
   const params = useParams();
   const axiosPrivate = useAxiosPrivate();
   const [isLoading, setIsLoading] = useState(true);
@@ -127,13 +127,13 @@ export default function Profile() {
       ) : (
         <>
           <div className={classes.header}>
-            <ProfileCard user={userProfile} size="large" />
+            <ProfileCard user={notMyProfile? userProfile : user} size="large" />
           </div>
           <div className={classes.content}>
             {notMyProfile ? null : (
               <div className={classes.content_infoLoggedUser}>
                 <h2>Informations Personnelles</h2>
-                <ProfileForm userProfile={userProfile} />
+                <ProfileForm userProfile={notMyProfile? userProfile : user} setUserProfile={setUserProfile} />
                 <hr />
                 <p className={classes.title}>Mes contacts</p>
                 <ul className={classes.friendList}>

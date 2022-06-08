@@ -1,6 +1,6 @@
 import classes from "./ProfileForm.module.scss";
 import { useState } from "react";
-import { NoAccounts, LockReset } from "@mui/icons-material";
+import { NoAccounts } from "@mui/icons-material";
 import TextareaForm from "../textarea-form/TextareaForm.component";
 import ImageForm from "../image-form/ImageForm";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";

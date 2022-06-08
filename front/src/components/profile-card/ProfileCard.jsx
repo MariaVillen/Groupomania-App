@@ -23,7 +23,7 @@ export default function ProfileCard({user, size}) {
           /> : <></>}
           </div>
         </div>
-        <Link to={`profile/${user.id}`}>    
+        <Link to={`/profile/${user.id}`}>    
         <div className={classes.container_avatar}>
             {user.profilePicture ? 
           <img

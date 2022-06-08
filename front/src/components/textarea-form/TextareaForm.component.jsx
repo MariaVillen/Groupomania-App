@@ -6,7 +6,7 @@ import { useState, useRef } from "react";
 import useAuth from "../../hooks/useAuth";
 import { ROLES } from "../../helpers/rolesList";
 
-export default function TextareaForm({className}) {
+export default function TextareaForm({classNamez}) {
   const axios = useAxiosPrivate();
   const { auth, user, setUser } = useAuth();
  
