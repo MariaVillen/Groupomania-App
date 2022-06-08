@@ -172,7 +172,7 @@ exports.getUserLikeComment = (req, res) =>{
 exports.removeComment = (req, res) => {
 
   const commentId = req.params.id;
-  const role = req.userRole;
+  const role = req.role;
   const userRequester = req.userId;
 
   if ( !commentId ) {
@@ -184,6 +184,7 @@ exports.removeComment = (req, res) => {
         return res.status( 404 ).json({ "error": "Le commentaire n'esxiste pas" });
 
       // Verify if it is admin or a user who deletes his own comment.
+
       } else if ( role === ROLES_LIST.admin || userRequester === comment.userId ) {
         const commentPostId = comment.postId;
         Comments.destroy({
@@ -203,6 +204,7 @@ exports.removeComment = (req, res) => {
         })
 
       } else {
+        console.log(role);
         return res.status( 400 ).json({"error": "Vous devez être administrateur ou le propietaire du commentaire pour lui effacer."})
       }
     })
